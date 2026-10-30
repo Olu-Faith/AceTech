@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    /* Marks JS as available so CSS can hide elements until GSAP animates them in.
+       script.js clears the timer once GSAP is confirmed; if the CDN is slow/blocked,
+       the guard un-hides everything after 4s. */
+    document.documentElement.classList.add('js');
+    window.__jsGuard = setTimeout(function () { document.documentElement.classList.remove('js'); }, 4000);
+  </script>
+  <title>AceTech Studios | Digital products and brands that earn trust</title>
+  <meta name="description" content="AceTech Studios designs and builds websites, apps, brands and video content for startups and growing businesses.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Icon sprite: reference with <svg class="i"><use href="#i-name"/></svg> -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
+    <symbol id="i-up-right" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-check-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></symbol>
+    <symbol id="i-palette" viewBox="0 0 24 24"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.9 0 1.6-.7 1.6-1.7 0-.4-.2-.8-.4-1.1-.3-.3-.4-.7-.4-1.100a1.600 1.600 0 0 1 1.700-1.700H16c3 0 5.500-2.500 5.500-5.500C22 6 17.500 2 12 2z"/></symbol>
+    <symbol id="i-clapper" viewBox="0 0 24 24"><path d="M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM3 11l-.9-2.400c-.3-1.100.3-2.200 1.300-2.500l13.500-4c1.100-.3 2.200.3 2.500 1.300L21 11M6.200 5.300l3.100 3.900M12.400 3.400l3.100 4"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v11H3zM9 21v-7h6v7"/></symbol>
+    <symbol id="i-video" viewBox="0 0 24 24"><path d="m16 13 5.200 3.500a.5.5 0 0 0 .8-.4V7.900a.5.5 0 0 0-.8-.4L16 11M4 6h10a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z"/></symbol>
+    <symbol id="i-receipt" viewBox="0 0 24 24"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1zM8 8h8M8 12h8"/></symbol>
+    <symbol id="i-rocket" viewBox="0 0 24 24"><path d="M4.500 16.500c-1.500 1.300-2 5-2 5s3.700-.5 5-2c.7-.8.7-2.100-.1-2.900a2.200 2.200 0 0 0-2.900-.1zM12 15l-3-3a22 22 0 0 1 2-3.950A12.900 12.900 0 0 1 22 2c0 2.700-.8 7.500-6 11a22.400 22.400 0 0 1-4 2zM9 12H4s.55-3 2-4c1.600-1.100 5 0 5 0M12 15v5s3-.55 4-2c1.100-1.600 0-5 0-5"/></symbol>
+    <symbol id="i-gauge" viewBox="0 0 24 24"><path d="m12 14 4-4M3.300 19a10 10 0 1 1 17.400 0"/></symbol>
+    <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.700 6.300a1 1 0 0 0 0 1.400l1.600 1.600a1 1 0 0 0 1.400 0l3.800-3.800a6 6 0 0 1-7.900 7.900l-6.900 6.900a2.100 2.100 0 0 1-3-3l6.900-6.900a6 6 0 0 1 7.900-7.900z"/></symbol>
+    <symbol id="i-hex" viewBox="0 0 24 24"><path d="M12 2 3 7v10l9 5 9-5V7z"/><circle cx="12" cy="12" r="2.500"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 2 10 5-10 5L2 7zM2 12l10 5 10-5M2 17l10 5 10-5"/></symbol>
+    <symbol id="i-cash" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.500"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M19 14c1.500-1.500 3-3.200 3-5.500A5.500 5.500 0 0 0 16.500 3c-1.800 0-3 .5-4.500 2-1.500-1.500-2.700-2-4.500-2A5.500 5.500 0 0 0 2 8.500c0 2.300 1.500 4 3 5.500l7 7z"/></symbol>
+    <symbol id="i-sprout" viewBox="0 0 24 24"><path d="M7 20h10M10 20c5.500-2.500.8-6.400 3-10M9.500 9.400c1.100.9 1.800 2.200 2 3.600-1.400.2-2.800-.4-3.800-1.300a4.500 4.500 0 0 1-1.200-3.700c1.300 0 2.200.4 3 1.400zM14.100 6a7 7 0 0 0-1.100 4c1.900-.1 3.300-.6 4.300-1.400 1-1 1.600-2.300 1.700-4.600-2.700.1-4 1-4.900 2z"/></symbol>
+  </defs>
+</svg>
+
+<!-- ============ HEADER (sticky, single-page anchor nav) ============ -->
+<header class="header" id="header">
+  <div class="container header__inner">
+    <a href="#home" class="logo" aria-label="AceTech home">
+      <img src="images/acetech_studios.png" alt="AceTech" width="120" height="28">
+    </a>
+    <nav class="nav" id="nav" aria-label="Main navigation">
+      <ul class="nav__list">
+        <li><a href="#services" class="nav__link">Services</a></li>
+        <li><a href="#work" class="nav__link">Work</a></li>
+        <li><a href="#process" class="nav__link">Process</a></li>
+        <li><a href="#pricing" class="nav__link">Pricing</a></li>
+        <li><a href="#about" class="nav__link">About</a></li>
+        <li><a href="#contact" class="nav__link">Contact</a></li>
+      </ul>
+      <a href="#contact" class="btn btn--dark btn--sm nav__cta">Start a Project</a>
+    </nav>
+
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+      <span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="home">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <p class="hero__meta mono">
+        <span>Design · Web · Mobile · Branding · Video — Lagos</span>
+        <span class="pill"><i class="dot"></i>Now booking projects for April</span>
+      </p>
+
+      <h1 class="hero__title">Digital products and brands <span class="nowrap">that <em>earn trust.</em></span></h1>
+
+      <p class="hero__lead">AceTech Studios designs and builds websites, apps, brands and video content for startups and growing businesses. We specialize in product design and web development, delivered fast and built properly.</p>
+
+      <div class="hero__cta">
+        <a href="#contact" class="btn btn--dark">Start a Project <svg class="i"><use href="#i-arrow"/></svg></a>
+        <a href="#work" class="btn btn--light">View Selected Work <svg class="i"><use href="#i-up-right"/></svg></a>
+      </div>
+
+      <ul class="hero__checks mono">
+        <li><svg class="i" data-draw><use href="#i-check-circle"/></svg>Design and development under one roof</li>
+        <li><svg class="i" data-draw><use href="#i-check-circle"/></svg>Milestone-based payments</li>
+        <li><svg class="i" data-draw><use href="#i-check-circle"/></svg>Regular progress updates</li>
+      </ul>
+
+      <!-- Browser-frame showcase -->
+      <div class="showcase">
+        <div class="showcase__bar mono">
+          <span class="showcase__dots"><i></i><i></i><i></i></span>
+          <span class="showcase__url">acetechstudios.com/client-suite/v2</span>
+          <span class="showcase__vitals">99.8% Vitals</span>
+        </div>
+        <div class="showcase__body">
+          <div class="media showcase__main" data-label="Dashboard preview">
+            <img src="assets/hero-dashboard.jpg" alt="Financial dashboard designed by AceTech" onerror="this.remove()">
+            <span class="badge mono"><i class="dot"></i>Core Web Vitals Benchmark</span>
+          </div>
+          <aside class="showcase__side">
+            <p class="showcase__row mono"><span>Mobile Architecture</span><b>60 FPS Native</b></p>
+            <div class="media showcase__phone" data-label="Mobile app preview">
+              <img src="assets/hero-mobile.jpg" alt="Mobile app built by AceTech" onerror="this.remove()">
+            </div>
+            <div class="showcase__stat">
+              <div><span class="mono">Average sprint cycle</span><strong><span data-count="14">14</span> Days</strong></div>
+              <svg class="i i--lg" data-draw><use href="#i-gauge"/></svg>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TRUSTED BY ============ -->
+  <section class="logos" aria-label="Clients">
+    <div class="container logos__inner">
+      <p class="logos__label"><span class="mono">Proof of delivery</span>Trusted by teams building real products.</p>
+      <ul class="logos__list">
+        <li class="reveal"><svg class="i"><use href="#i-hex"/></svg>TalentPlus</li>
+        <li class="reveal"><svg class="i"><use href="#i-layers"/></svg>Talnts App</li>
+        <li class="reveal"><svg class="i"><use href="#i-cash"/></svg>PaySphere</li>
+        <li class="reveal"><svg class="i"><use href="#i-heart"/></svg>Kora Health</li>
+        <li class="reveal"><svg class="i"><use href="#i-sprout"/></svg>FarmVantage</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ 01 SERVICES ============ -->
+  <section class="section" id="services" data-nav="services">
+    <div class="container">
+      <header class="section__head reveal">
+        <p class="eyebrow mono">01 — Services</p>
+        <h2>Everything your digital presence needs, <em>under one roof.</em></h2>
+      </header>
+
+      <!-- Two core services -->
+      <div class="grid grid--2">
+        <article class="card card--service reveal">
+          <div class="card__top mono"><span>01 / 05</span><span class="tag tag--warm">Core Focus</span></div>
+          <h3>Product Design (UI/UX)</h3>
+          <p class="muted">Translating complex user journeys into intuitive, high-conversion interfaces that users love returning to.</p>
+          <ul class="checklist">
+            <li>User research, customer journeys &amp; competitive audits</li>
+            <li>Information architecture &amp; wireframing</li>
+            <li>High-fidelity UI design &amp; clickable prototypes</li>
+            <li>Scalable Figma design systems &amp; tokens</li>
+            <li>Developer handoff specs and asset packaging</li>
+          </ul>
+          <footer class="card__foot mono"><span class="muted">Deliverables: Figma + Tokens</span><a href="#contact" class="link">Discuss Scope →</a></footer>
+        </article>
+
+        <article class="card card--service reveal">
+          <div class="card__top mono"><span>02 / 05</span><span class="tag tag--warm">Core Focus</span></div>
+          <h3>Web Development</h3>
+          <p class="muted">Lightning-fast, highly resilient web applications and marketing sites engineered with Next.js and modern stacks.</p>
+          <ul class="checklist">
+            <li>Modern frontend architecture (React, Next.js, Tailwind)</li>
+            <li>Custom backend APIs, authentication &amp; databases</li>
+            <li>E-commerce integrations (Paystack, Stripe, Flutterwave)</li>
+            <li>Headless CMS setup (Sanity, Strapi, Webflow)</li>
+            <li>Core Web Vitals tuning &amp; ongoing code audits</li>
+          </ul>
+          <footer class="card__foot mono"><span class="muted">Deliverables: Production Code + CI/CD</span><a href="#contact" class="link">Discuss Scope →</a></footer>
+        </article>
+      </div>
+
+      <!-- Three add-on services -->
+      <div class="grid grid--3">
+        <article class="card card--mini reveal">
+          <div class="card__top mono"><span class="muted">03</span><svg class="i"><use href="#i-phone"/></svg></div>
+          <h3>Mobile App Development</h3>
+          <p class="muted">Cross-platform and native iOS &amp; Android applications engineered for speed, fluid gestures, and reliability.</p>
+          <ul class="dotlist mono"><li>React Native &amp; Flutter</li><li>App Store &amp; Play Store approval</li><li>Offline-first local sync</li></ul>
+          <footer class="card__foot"><a href="#contact" class="link mono">Inquire Mobile →</a></footer>
+        </article>
+        <article class="card card--mini reveal">
+          <div class="card__top mono"><span class="muted">04</span><svg class="i"><use href="#i-palette"/></svg></div>
+          <h3>Branding</h3>
+          <p class="muted">Distinctive brand identities, typographic systems, and tone of voice designed to set your business apart.</p>
+          <ul class="dotlist mono"><li>Logomark &amp; typography</li><li>Brand guidelines &amp; token books</li><li>Pitch decks &amp; marketing kits</li></ul>
+          <footer class="card__foot"><a href="#contact" class="link mono">Inquire Brand →</a></footer>
+        </article>
+        <article class="card card--mini reveal">
+          <div class="card__top mono"><span class="muted">05</span><svg class="i"><use href="#i-clapper"/></svg></div>
+          <h3>Video Editing</h3>
+          <p class="muted">High-energy product walk-throughs, corporate explainers, and motion graphics tailored for maximum engagement.</p>
+          <ul class="dotlist mono"><li>Product demo reels</li><li>Social video cutdowns</li><li>Motion branding &amp; 2D animation</li></ul>
+          <footer class="card__foot"><a href="#contact" class="link mono">Inquire Video →</a></footer>
+        </article>
+      </div>
+
+      <div class="callout reveal">
+        <p><strong>Not sure which you need?</strong> Tell us about your project and we'll recommend the right scope.</p>
+        <a href="#contact" class="btn btn--light btn--sm">Book Free Consultation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 02 WORK ============ -->
+  <section class="section section--ruled" id="work" data-nav="work">
+    <div class="container">
+      <header class="section__head section__head--split reveal">
+        <div>
+          <p class="eyebrow mono">02 — Selected Work</p>
+          <h2>Work built to solve problems and <em>scale.</em></h2>
+        </div>
+        <p class="section__note mono">Engineered for real users, production performance, and sustainable business outcomes.</p>
+      </header>
+
+      <div class="grid grid--2">
+        <article class="card case reveal">
+          <div class="media case__img" data-label="Planner">
+            <img src="assets/case-planner.jpg" alt="Planner mobile app" loading="lazy" onerror="this.remove()">
+            <span class="badge badge--dark mono">Case // 01</span>
+          </div>
+          <div class="case__body">
+            <p class="tags"><span class="tag">Product Design</span><span class="tag">Mobile App</span></p>
+            <h3>Planner</h3>
+            <p class="muted">Networking and mentorship mobile app designed to bridge aspiring talent with veteran industry leaders.</p>
+            <p class="outcome"><b class="mono">Outcome:</b> Empowering 25,000+ professionals across West Africa.</p>
+            <footer class="card__foot mono"><span class="muted">Full iOS &amp; Android Spec</span><a href="#contact" class="link">View case study →</a></footer>
+          </div>
+        </article>
+
+        <article class="card case reveal">
+          <div class="media case__img" data-label="UrbanRide">
+            <img src="assets/case-urbanride.jpg" alt="UrbanRide ridesharing app" loading="lazy" onerror="this.remove()">
+            <span class="badge badge--dark mono">Case // 02</span>
+          </div>
+          <div class="case__body">
+            <p class="tags"><span class="tag">Product Design</span><span class="tag">Mobile App</span></p>
+            <h3>UrbanRide</h3>
+            <p class="muted">On-demand ridesharing mobile platform pairing rider booking ease with real-time driver dispatch ergonomics.</p>
+            <p class="outcome"><b class="mono">Outcome:</b> Sub-3-minute average dispatch matching times.</p>
+            <footer class="card__foot mono"><span class="muted">Design System + Rider &amp; Driver Apps</span><a href="#contact" class="link">View case study →</a></footer>
+          </div>
+        </article>
+
+        <article class="card case reveal">
+          <div class="media case__img" data-label="QuickBite">
+            <img src="assets/case-quickbite.jpg" alt="QuickBite food ordering platform" loading="lazy" onerror="this.remove()">
+            <span class="badge badge--dark mono">Case // 03</span>
+          </div>
+          <div class="case__body">
+            <p class="tags"><span class="tag">Web Development</span><span class="tag">UI/UX</span></p>
+            <h3>QuickBite</h3>
+            <p class="muted">Food ordering and merchant fulfillment web platform with live order tracking and integrated Paystack payments.</p>
+            <p class="outcome"><b class="mono">Outcome:</b> 42% increase in checkout completions post-redesign.</p>
+            <footer class="card__foot mono"><span class="muted">Next.js + Tailwind + Node.js API</span><a href="#contact" class="link">View case study →</a></footer>
+          </div>
+        </article>
+
+        <article class="card pipeline reveal">
+          <p class="eyebrow mono">Portfolio pipeline</p>
+          <h3>More case studies coming.</h3>
+          <p class="muted">We work under strict NDAs for several stealth fintech and healthtech ventures. We are happy to walk you through live demos and private staging builds over a short discovery call.</p>
+          <p class="tags tags--outline mono"><span class="tag">Fintech Core Web</span><span class="tag">Health Logistics App</span><span class="tag">B2B SaaS Portal</span></p>
+          <a href="#contact" class="btn btn--dark btn--sm">Talk to us about your project <svg class="i"><use href="#i-arrow"/></svg></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 03 PROCESS (dark band) ============ -->
+  <section class="section section--dark" id="process" data-nav="process">
+    <div class="container">
+      <header class="section__head section__head--split reveal">
+        <div>
+          <p class="eyebrow mono">03 — Process</p>
+          <h2>A predictable process built for <em>speed and clarity.</em></h2>
+        </div>
+        <p class="standard"><span class="mono">Our communication standard</span>Regular updates · Shared project board · One dedicated point of contact.</p>
+      </header>
+
+      <ol class="steps">
+        <li class="step reveal">
+          <div class="step__top mono"><b>01</b><span>1–2 weeks</span></div>
+          <h3>Discover</h3>
+          <p>Alignment, scoping, requirements mapping and technical architecture blueprints.</p>
+          <p class="step__out"><span class="mono">Deliverable</span>Project Blueprint</p>
+        </li>
+        <li class="step reveal">
+          <div class="step__top mono"><b>02</b><span>2–3 weeks</span></div>
+          <h3>Design</h3>
+          <p>Wireframes, hi-fi mockups, user flows and fully tokenized atomic design systems.</p>
+          <p class="step__out"><span class="mono">Deliverable</span>Clickable Figma Prototype</p>
+        </li>
+        <li class="step reveal">
+          <div class="step__top mono"><b>03</b><span>3–6 weeks</span></div>
+          <h3>Build</h3>
+          <p>Rigorous frontend and backend engineering, automated tests and QA validation.</p>
+          <p class="step__out"><span class="mono">Deliverable</span>Staging Environment</p>
+        </li>
+        <li class="step reveal">
+          <div class="step__top mono"><b>04</b><span>1 week</span></div>
+          <h3>Launch</h3>
+          <p>Production deployment, app store verification, DNS routing and speed auditing.</p>
+          <p class="step__out"><span class="mono">Deliverable</span>Live Tested Product</p>
+        </li>
+        <li class="step reveal">
+          <div class="step__top mono"><b>05</b><span>Ongoing</span></div>
+          <h3>Support</h3>
+          <p>Uptime monitoring, sprint enhancements, bug fixing, and continuous iteration.</p>
+          <p class="step__out"><span class="mono">Deliverable</span>Monthly Support SLA</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ 04 WHY ACETECH ============ -->
+  <section class="section" id="why" data-nav="process">
+    <div class="container">
+      <header class="section__head reveal">
+        <p class="eyebrow mono">04 — Why AceTech</p>
+        <h2>Why founders and companies <em>choose AceTech.</em></h2>
+      </header>
+      <div class="grid grid--4">
+        <article class="card card--why reveal">
+          <svg class="i i--accent" data-draw><use href="#i-home"/></svg>
+          <h3>Under One Roof</h3>
+          <p class="muted">No handoff gaps. Engineers and product designers collaborate in unison from day one, eliminating costly rework.</p>
+          <p class="mono muted">Zero handoff friction</p>
+        </article>
+        <article class="card card--why reveal">
+          <svg class="i i--accent" data-draw><use href="#i-video"/></svg>
+          <h3>Transparent Comms</h3>
+          <p class="muted">Regular weekly async Loom updates, live staging links, and transparent sprint boards. You are never left wondering.</p>
+          <p class="mono muted">Weekly video demos</p>
+        </article>
+        <article class="card card--why reveal">
+          <svg class="i i--accent" data-draw><use href="#i-receipt"/></svg>
+          <h3>Clear Pricing</h3>
+          <p class="muted">Project-based or milestone-based payments tied directly to verified deliverables. No hidden hourly creep or surprises.</p>
+          <p class="mono muted">Milestone tied</p>
+        </article>
+        <article class="card card--why reveal">
+          <svg class="i i--accent" data-draw><use href="#i-rocket"/></svg>
+          <h3>End-to-End Delivery</h3>
+          <p class="muted">From whiteboard concept to production deployment, App Store publishing, and initial user testing cycles.</p>
+          <p class="mono muted">Concept through launch</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 05 PRICING ============ -->
+  <section class="section section--ruled" id="pricing" data-nav="pricing">
+    <div class="container">
+      <header class="section__head reveal">
+        <p class="eyebrow mono">05 — Pricing</p>
+        <h2>Clear scope, honest pricing, <em>no surprises.</em></h2>
+      </header>
+
+      <div class="grid grid--3 pricing">
+        <article class="card plan reveal">
+          <p class="mono muted">Foundation</p>
+          <h3>Landing Page / Marketing Site</h3>
+          <p class="muted">Perfect for seed startups and product launches that need credibility fast.</p>
+          <div class="plan__price">
+            <p class="mono muted">Timeline: <b>2–3 weeks</b></p>
+            <p class="price">₦850,000 <small class="mono">/ $1,200</small></p>
+          </div>
+          <ul class="checklist checklist--sm">
+            <li>Bespoke visual UI design</li>
+            <li>Responsive Next.js or Webflow build</li>
+            <li>Search engine &amp; Core Web Vitals speed tuning</li>
+            <li>Headless CMS setup for blog &amp; team updates</li>
+          </ul>
+          <a href="#contact" class="btn btn--tint btn--block">Select Foundation</a>
+        </article>
+
+        <article class="card plan plan--featured reveal">
+          <span class="plan__flag mono">Most requested</span>
+          <p class="mono eyebrow">Growth tier</p>
+          <h3>Business Web Platform</h3>
+          <p class="muted">Full-fledged digital applications with custom logic, logins, and billing rails.</p>
+          <div class="plan__price">
+            <p class="mono muted">Timeline: <b>4–6 weeks</b></p>
+            <p class="price">₦2,200,000 <small class="mono">/ $2,800</small></p>
+          </div>
+          <ul class="checklist checklist--sm">
+            <li>Full product UI/UX workflow &amp; design system</li>
+            <li>Custom full-stack web application</li>
+            <li>User authentication, roles &amp; customer dashboards</li>
+            <li>Payment gateway integration (Paystack/Stripe)</li>
+            <li>30 days post-launch warranty &amp; tuning</li>
+          </ul>
+          <a href="#contact" class="btn btn--dark btn--block">Select Business Platform</a>
+        </article>
+
+        <article class="card plan reveal">
+          <p class="mono muted">Enterprise MVP</p>
+          <h3>Custom Product MVP</h3>
+          <p class="muted">For startups ready to build robust, scalable cross-platform mobile or web software.</p>
+          <div class="plan__price">
+            <p class="mono muted">Timeline: <b>6–8 weeks</b></p>
+            <p class="price">₦3,800,000 <small class="mono">/ $4,500</small></p>
+          </div>
+          <ul class="checklist checklist--sm">
+            <li>Complete product architecture &amp; design system</li>
+            <li>Full-stack web app or native React Native mobile build</li>
+            <li>Admin dashboard, metrics &amp; content tools</li>
+            <li>App store submission &amp; cloud infrastructure setup</li>
+            <li>60 days dedicated post-launch support SLA</li>
+          </ul>
+          <a href="#contact" class="btn btn--tint btn--block">Select Custom MVP</a>
+        </article>
+      </div>
+
+      <div class="callout callout--card reveal">
+        <div class="callout__text">
+          <svg class="i i--accent" data-draw><use href="#i-wrench"/></svg>
+          <p><strong>Also available: Mobile Apps · Branding · Video Editing</strong><span class="muted">Looking for standalone branding, promo reels, or specialized mobile development?</span></p>
+        </div>
+        <a href="#contact" class="btn btn--tint btn--sm mono">Request a Custom Quote →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TESTIMONIALS ============ -->
+  <section class="section section--ruled" id="testimonials" data-nav="pricing">
+    <div class="container">
+      <header class="section__head reveal">
+        <p class="eyebrow mono">Testimonials</p>
+        <h2>Trusted by founders who value <em>execution.</em></h2>
+      </header>
+      <div class="grid grid--2">
+        <blockquote class="card quote reveal">
+          <span class="quote__mark" aria-hidden="true">“</span>
+          <p>"AceTech delivered our mobile app prototype two weeks ahead of schedule without cutting a single corner on quality. Outstanding work."</p>
+          <footer><div><strong>Arinze Onye</strong><span class="mono muted">Co-Founder, Talnts App</span></div><span class="tag mono">Mobile App &amp; UI/UX</span></footer>
+        </blockquote>
+        <blockquote class="card quote reveal">
+          <span class="quote__mark" aria-hidden="true">“</span>
+          <p>"The communication was flawless. Having design and web engineering in the same room solved bottlenecks that previously stalled our team for months."</p>
+          <footer><div><strong>Augustine O.</strong><span class="mono muted">CEO, TalentPlus</span></div><span class="tag mono">Full-Stack Web Platform</span></footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT / STUDIO ETHOS ============ -->
+  <section class="section section--tint" id="about" data-nav="about">
+    <div class="container">
+      <div class="card ethos reveal">
+        <div class="ethos__copy">
+          <p class="eyebrow mono">Studio ethos</p>
+          <h2>Speed should never compromise <em>craft.</em></h2>
+          <p class="muted">Founded in Lagos, AceTech Studios is built on a simple premise: high velocity does not mean sloppy code or cut-corner aesthetics. Projects are led directly by senior craft leads with vetted specialists brought in for specialized scale.</p>
+          <dl class="stats">
+            <div><dt><span data-count="100">100</span>%</dt><dd class="mono muted">Senior Craft Led</dd></div>
+            <div><dt>Lagos</dt><dd class="mono muted">Global Engineering Hub</dd></div>
+          </dl>
+        </div>
+        <div class="protocol">
+          <p class="protocol__head mono"><span>AceTech Sprint Protocol</span><svg class="i i--accent" data-draw><use href="#i-check-circle"/></svg></p>
+          <ul class="protocol__list">
+            <li><span>Direct Founder Access</span><b class="mono">Active</b></li>
+            <li><span>Zero Junior Handoffs</span><b class="mono">Guaranteed</b></li>
+            <li><span>Production Code Ownership</span><b class="mono">100%</b></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="section" id="faq" data-nav="about">
+    <div class="container">
+      <header class="section__head reveal">
+        <p class="eyebrow mono">FAQ</p>
+        <h2>Frequently asked <em>questions.</em></h2>
+      </header>
+
+      <div class="faq">
+        <div class="faq__item reveal">
+          <button class="faq__q" aria-expanded="false" aria-controls="faq-1">What are your typical project timelines?<svg class="i"><use href="#i-chevron"/></svg></button>
+          <div class="faq__a" id="faq-1"><div><p>Landing pages take 2–3 weeks, business platforms 4–6 weeks and full MVPs 6–8 weeks, depending on scope and how quickly feedback comes in.</p></div></div>
+        </div>
+        <div class="faq__item reveal">
+          <button class="faq__q" aria-expanded="false" aria-controls="faq-2">How do milestone-based payments work?<svg class="i"><use href="#i-chevron"/></svg></button>
+          <div class="faq__a" id="faq-2"><div><p>We split the project into agreed milestones. You pay a deposit to start, then pay at each milestone once its deliverables are approved.</p></div></div>
+        </div>
+        <div class="faq__item reveal">
+          <button class="faq__q" aria-expanded="false" aria-controls="faq-3">What input do you need from our team?<svg class="i"><use href="#i-chevron"/></svg></button>
+          <div class="faq__a" id="faq-3"><div><p>A single point of contact, any brand assets you already have, and timely feedback at each review stage. We guide you through the rest.</p></div></div>
+        </div>
+        <div class="faq__item reveal">
+          <button class="faq__q" aria-expanded="false" aria-controls="faq-4">What is your design revisions policy?<svg class="i"><use href="#i-chevron"/></svg></button>
+          <div class="faq__a" id="faq-4"><div><p>Each design phase includes a defined number of revision rounds. Extra rounds or scope changes are quoted transparently before work begins.</p></div></div>
+        </div>
+        <div class="faq__item reveal">
+          <button class="faq__q" aria-expanded="false" aria-controls="faq-5">Do you work with international remote clients?<svg class="i"><use href="#i-chevron"/></svg></button>
+          <div class="faq__a" id="faq-5"><div><p>Yes. We work remotely with clients worldwide, using shared boards, weekly demos and scheduled calls to keep everything clear.</p></div></div>
+        </div>
+        <div class="faq__item reveal">
+          <button class="faq__q" aria-expanded="false" aria-controls="faq-6">Can we bundle design, web, and video together?<svg class="i"><use href="#i-chevron"/></svg></button>
+          <div class="faq__a" id="faq-6"><div><p>Absolutely. Bundling keeps brand, product and content consistent, and we can scope it as a single engagement.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT CTA ============ -->
+  <section class="section section--cta" id="contact" data-nav="contact">
+    <div class="container">
+      <div class="cta reveal">
+        <div class="cta__copy">
+          <p class="eyebrow eyebrow--light mono">Get in touch</p>
+          <h2>Have a project in mind? <em>Let's build it properly.</em></h2>
+          <p>Let's discuss your timeline, scope, and budget. We reply within 24 hours with an actionable roadmap.</p>
+        </div>
+        <div class="cta__actions">
+          <a href="mailto:hello@acetechstudios.com" class="btn btn--accent">Start a Project <svg class="i"><use href="#i-arrow"/></svg></a>
+          <a href="mailto:hello@acetechstudios.com?subject=Discovery%20call" class="btn btn--outline">Book 20-min Discovery Call</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container footer__grid">
+    <div class="footer__brand">
+    <a href="#home" class="logo" aria-label="AceTech home">
+      <img src="images/acetech_studios.png" alt="AceTech" width="120" height="28">
+    </a>      
+    <p class="footer__tag mono">Speedy Delivery with High Quality.</p>
+      <p>Engineering rigor paired with editorial sophistication. Digital products that win users and compound value.</p>
+    </div>
+    <nav aria-label="Services"><h4 class="mono">Services</h4><a href="#services">Product Design</a><a href="#services">Web Development</a><a href="#services">Mobile App Dev</a><a href="#services">Branding &amp; Identity</a><a href="#services">Video Editing</a></nav>
+    <nav aria-label="Company"><h4 class="mono">Company</h4><a href="#work">Selected Work</a><a href="#pricing">Pricing &amp; Plans</a><a href="#about">Studio Story</a><a href="#contact">Careers</a><a href="#contact">Brand Assets</a></nav>
+    <nav aria-label="Resources"><h4 class="mono">Resources</h4><a href="#contact">Figma UI Kit</a><a href="#contact">Core Web Vitals Guide</a><a href="#contact">Design Sprint Checklist</a><a href="#contact">Privacy Policy</a><a href="#contact">Terms of Service</a></nav>
+    <div class="footer__contact"><h4 class="mono">Contact</h4><a href="mailto:hello@acetechstudios.com" class="footer__email">hello@acetechstudios.com</a><p>Lagos, Nigeria</p><p class="mono"><i class="dot"></i>GMT+1 Office Hours</p></div>
+  </div>
+  <div class="container footer__bottom mono">
+    <p>© <span id="year">2026</span> AceTech Studios. Built with precision and speed.</p>
+    <p class="footer__social"><a href="#">LinkedIn</a><a href="#">X (Twitter)</a><a href="#">Instagram</a></p>
+  </div>
+</footer>
+
+<!-- Animation libraries (pinned). To self-host: download both files into /assets and point these src paths there. -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
