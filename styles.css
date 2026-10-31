@@ -168,8 +168,17 @@ h1 em, h2 em { font-style: normal; color: var(--accent); }
 .header.is-scrolled { box-shadow: 0 6px 20px -12px rgba(0,0,0,.18); }
 .header__inner { height: 100%; display: flex; align-items: center; justify-content: space-between; }
 
-.logo { font-weight: 800; font-size: 1.1rem; letter-spacing: -.02em; }
-.logo--light { color: #fff; }
+.logo { 
+  max-width: 65px;
+  width: 100%;
+  height: auto;
+  display: block;
+  align-self: center;
+  flex-shrink: 0; }
+
+  @media (min-width: 768px) {
+    .logo { max-width: 100px; }
+  }
 
 /* Mobile: nav is a dropdown panel under the header */
 .nav {
