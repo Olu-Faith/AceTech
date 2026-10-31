@@ -71,54 +71,69 @@
 <main id="home">
 
   <!-- ============ HERO ============ -->
-  <section class="hero">
-    <div class="container hero__inner">
-      <p class="hero__meta mono">
-        <span>Design · Web · Mobile · Branding · Video — Lagos</span>
-        <span class="pill"><i class="dot"></i>Now booking projects for April</span>
-      </p>
-
-      <h1 class="hero__title">Digital products and brands <span class="nowrap">that <em>earn trust.</em></span></h1>
-
-      <p class="hero__lead">AceTech Studios designs and builds websites, apps, brands and video content for startups and growing businesses. We specialize in product design and web development, delivered fast and built properly.</p>
-
+<section class="hero hero--v3" aria-labelledby="hero-title">
+  <div class="hero__wrap">
+ 
+    <div class="hero__inner">
+      <p class="hero__meta">Design · Web · Mobile · Branding · Video</p>
+ 
+      <h1 class="hero__title" id="hero-title">We design and build digital products <em>that work</em> as well as they look.</h1>
+ 
+      <p class="hero__lead">From websites and mobile apps to brand identity and video, one team handles every stage. You get senior-level craft, fast turnaround, and pricing that's fair and fully transparent.</p>
+ 
       <div class="hero__cta">
         <a href="#contact" class="btn btn--dark">Start a Project <svg class="i"><use href="#i-arrow"/></svg></a>
-        <a href="#work" class="btn btn--light">View Selected Work <svg class="i"><use href="#i-up-right"/></svg></a>
+        <a href="#work" class="btn btn--light">View Selected Work <svg class="i"><use href="#i-arrow"/></svg></a>
       </div>
-
-      <ul class="hero__checks mono">
-        <li><svg class="i" data-draw><use href="#i-check-circle"/></svg>Design and development under one roof</li>
-        <li><svg class="i" data-draw><use href="#i-check-circle"/></svg>Milestone-based payments</li>
-        <li><svg class="i" data-draw><use href="#i-check-circle"/></svg>Regular progress updates</li>
+ 
+      <ul class="hero__checks">
+        <li><svg class="i" data-draw aria-hidden="true"><use href="#i-home"/></svg>Design and development under one roof</li>
+        <li><svg class="i" data-draw aria-hidden="true"><use href="#i-check-circle"/></svg>Regular progress updates</li>
+        <li><svg class="i" data-draw aria-hidden="true"><use href="#i-receipt"/></svg>Clear, transparent pricing</li>
       </ul>
-
-      <!-- Browser-frame showcase -->
-      <div class="showcase">
-        <div class="showcase__bar mono">
-          <span class="showcase__dots"><i></i><i></i><i></i></span>
-          <span class="showcase__url">acetechstudios.com/client-suite/v2</span>
-          <span class="showcase__vitals">99.8% Vitals</span>
-        </div>
-        <div class="showcase__body">
-          <div class="media showcase__main" data-label="Dashboard preview">
-            <img src="assets/hero-dashboard.jpg" alt="Financial dashboard designed by AceTech" onerror="this.remove()">
-            <span class="badge mono"><i class="dot"></i>Core Web Vitals Benchmark</span>
+ 
+      <!-- Selected-work preview. Filled automatically from site-data.js
+           (projects marked featured: true). Leave this block empty. -->
+      <div class="peek" data-peek aria-roledescription="carousel" aria-label="Selected work preview">
+        <div class="peek__frame">
+          <div class="peek__bar">
+            <span class="peek__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="peek__title" data-peek-title>Selected work</span>
+            <span class="peek__count" data-peek-count></span>
           </div>
-          <aside class="showcase__side">
-            <p class="showcase__row mono"><span>Mobile Architecture</span><b>60 FPS Native</b></p>
-            <div class="media showcase__phone" data-label="Mobile app preview">
-              <img src="assets/hero-mobile.jpg" alt="Mobile app built by AceTech" onerror="this.remove()">
+          <div class="peek__viewport" data-peek-viewport></div>
+          <div class="peek__caption">
+            <p class="peek__meta"><strong data-peek-name></strong><span data-peek-tags></span></p>
+            <div class="peek__controls">
+              <div class="peek__nav" data-peek-nav role="group" aria-label="Choose a project"></div>
+              <button class="peek__pause" type="button" data-peek-pause aria-pressed="false">Pause</button>
             </div>
-            <div class="showcase__stat">
-              <div><span class="mono">Average sprint cycle</span><strong><span data-count="14">14</span> Days</strong></div>
-              <svg class="i i--lg" data-draw><use href="#i-gauge"/></svg>
-            </div>
-          </aside>
+          </div>
         </div>
       </div>
     </div>
-  </section>
+ 
+    <!-- PROOF STRIP — EDIT THE THREE FIGURES HERE ---------------------------
+         For each one change:  data-count="NUMBER"  AND the same number as the
+         visible text inside the <span>. The "+" or " Weeks" after the span is
+         plain text, change it freely. Labels are the grey lines underneath. -->
+    <ul class="proof reveal" aria-label="AceTech in numbers">
+      <li>
+        <strong class="proof__value"><span data-count="20">20</span>+</strong>
+        <span class="proof__label">Projects delivered</span>
+      </li>
+      <li>
+        <strong class="proof__value"><span data-count="5">5</span>+</strong>
+        <span class="proof__label">Years of experience</span>
+      </li>
+      <li>
+        <strong class="proof__value"><span data-count="2">2</span> Weeks</strong>
+        <span class="proof__label">Average sprint length</span>
+      </li>
+    </ul>
+ 
+  </div>
+</section>
 
   <!-- ============ TRUSTED BY ============ -->
   <section class="logos" aria-label="Clients">
@@ -216,58 +231,18 @@
         <p class="section__note mono">Engineered for real users, production performance, and sustainable business outcomes.</p>
       </header>
 
-      <div class="grid grid--2">
-        <article class="card case reveal">
-          <div class="media case__img" data-label="Planner">
-            <img src="assets/case-planner.jpg" alt="Planner mobile app" loading="lazy" onerror="this.remove()">
-            <span class="badge badge--dark mono">Case // 01</span>
-          </div>
-          <div class="case__body">
-            <p class="tags"><span class="tag">Product Design</span><span class="tag">Mobile App</span></p>
-            <h3>Planner</h3>
-            <p class="muted">Networking and mentorship mobile app designed to bridge aspiring talent with veteran industry leaders.</p>
-            <p class="outcome"><b class="mono">Outcome:</b> Empowering 25,000+ professionals across West Africa.</p>
-            <footer class="card__foot mono"><span class="muted">Full iOS &amp; Android Spec</span><a href="#contact" class="link">View case study →</a></footer>
-          </div>
-        </article>
-
-        <article class="card case reveal">
-          <div class="media case__img" data-label="UrbanRide">
-            <img src="assets/case-urbanride.jpg" alt="UrbanRide ridesharing app" loading="lazy" onerror="this.remove()">
-            <span class="badge badge--dark mono">Case // 02</span>
-          </div>
-          <div class="case__body">
-            <p class="tags"><span class="tag">Product Design</span><span class="tag">Mobile App</span></p>
-            <h3>UrbanRide</h3>
-            <p class="muted">On-demand ridesharing mobile platform pairing rider booking ease with real-time driver dispatch ergonomics.</p>
-            <p class="outcome"><b class="mono">Outcome:</b> Sub-3-minute average dispatch matching times.</p>
-            <footer class="card__foot mono"><span class="muted">Design System + Rider &amp; Driver Apps</span><a href="#contact" class="link">View case study →</a></footer>
-          </div>
-        </article>
-
-        <article class="card case reveal">
-          <div class="media case__img" data-label="QuickBite">
-            <img src="assets/case-quickbite.jpg" alt="QuickBite food ordering platform" loading="lazy" onerror="this.remove()">
-            <span class="badge badge--dark mono">Case // 03</span>
-          </div>
-          <div class="case__body">
-            <p class="tags"><span class="tag">Web Development</span><span class="tag">UI/UX</span></p>
-            <h3>QuickBite</h3>
-            <p class="muted">Food ordering and merchant fulfillment web platform with live order tracking and integrated Paystack payments.</p>
-            <p class="outcome"><b class="mono">Outcome:</b> 42% increase in checkout completions post-redesign.</p>
-            <footer class="card__foot mono"><span class="muted">Next.js + Tailwind + Node.js API</span><a href="#contact" class="link">View case study →</a></footer>
-          </div>
-        </article>
-
-        <article class="card pipeline reveal">
-          <p class="eyebrow mono">Portfolio pipeline</p>
-          <h3>More case studies coming.</h3>
-          <p class="muted">We work under strict NDAs for several stealth fintech and healthtech ventures. We are happy to walk you through live demos and private staging builds over a short discovery call.</p>
-          <p class="tags tags--outline mono"><span class="tag">Fintech Core Web</span><span class="tag">Health Logistics App</span><span class="tag">B2B SaaS Portal</span></p>
-          <a href="#contact" class="btn btn--dark btn--sm">Talk to us about your project <svg class="i"><use href="#i-arrow"/></svg></a>
-        </article>
-      </div>
-    </div>
+<div class="grid grid--2" data-work-grid>
+ 
+  <!-- Stays at the end of the grid. Edit the text freely. -->
+  <article class="card pipeline reveal" data-work-pipeline>
+    <p class="eyebrow mono">Portfolio pipeline</p>
+    <h3>More case studies coming.</h3>
+    <p class="muted">We work under strict NDAs for several stealth fintech and healthtech ventures. We are happy to walk you through live demos and private staging builds over a short discovery call.</p>
+    <p class="tags tags--outline mono"><span class="tag">Fintech Core Web</span><span class="tag">Health Logistics App</span><span class="tag">B2B SaaS Portal</span></p>
+    <a href="#contact" class="btn btn--dark btn--sm">Talk to us about your project <svg class="i"><use href="#i-arrow"/></svg></a>
+  </article>
+ 
+</div>    </div>
   </section>
 
   <!-- ============ 03 PROCESS (dark band) ============ -->
@@ -552,6 +527,7 @@
 <!-- Animation libraries (pinned). To self-host: download both files into /assets and point these src paths there. -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="site-data.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
